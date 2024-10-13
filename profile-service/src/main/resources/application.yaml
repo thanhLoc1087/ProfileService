@@ -7,5 +7,15 @@ spring:
         username: ${MYSQL_USER:mysql}
         password: ${MYSQL_PASSWORD:mysql}
 
+    liquibase:
+        url: jdbc:mysql://localhost:3306/${MYSQL_DB:profiledb}
+        enabled: true
+        user: ${MYSQL_USER:root}
+        password: ${MYSQL_PASSWORD:mysqlpassword}
+        change-log: classpath:db/changelog/changelog-master.xml
+
 server:
     port: 9214
+
+api:
+    prefix: api/v1
