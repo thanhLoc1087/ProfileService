@@ -24,6 +24,10 @@ logging:
       springframework:
         security: DEBUG
 
+validator:
+    schema:
+        create-profile: validator/createProfile.chema.json
+
 server:
     port: 9214
 

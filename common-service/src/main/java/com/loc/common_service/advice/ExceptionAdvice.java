@@ -1,5 +1,7 @@
 package com.loc.common_service.advice;
 
+import java.util.Map;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.loc.common_service.common.CommonException;
 import com.loc.common_service.common.ErrorMessage;
+import com.loc.common_service.common.ValidateException;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,5 +30,12 @@ public class ExceptionAdvice {
         return ResponseEntity
             .status(ex.getStatus())
             .body(new ErrorMessage(ex.getCode(), ex.getMessage(), ex.getStatus()));
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<Map<String, String>> handleCommonException(ValidateException ex) {
+        return ResponseEntity
+            .status(ex.getStatus())
+            .body(ex.getMessageMap());
     }
 }
