@@ -1,18 +1,28 @@
 spring:
+    jpa:
+        show-sql: true
+
     application:
         name: profile-service
 
     r2dbc:
         url: r2dbc:pool:mysql://localhost:3306/${MYSQL_DB:profiledb}
-        username: ${MYSQL_USER:mysql}
+        username: ${MYSQL_USER:root}
         password: ${MYSQL_PASSWORD:mysql}
 
     liquibase:
         url: jdbc:mysql://localhost:3306/${MYSQL_DB:profiledb}
         enabled: true
         user: ${MYSQL_USER:root}
-        password: ${MYSQL_PASSWORD:mysqlpassword}
+        password: ${MYSQL_PASSWORD:mysql}
         change-log: classpath:db/changelog/changelog-master.xml
+
+        
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
 
 server:
     port: 9214
