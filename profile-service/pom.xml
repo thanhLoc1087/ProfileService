@@ -32,6 +32,11 @@
 		<lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>com.loc</groupId>
+			<artifactId>common-service</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 
 		<dependency>
 			<groupId>io.github.cdimascio</groupId>

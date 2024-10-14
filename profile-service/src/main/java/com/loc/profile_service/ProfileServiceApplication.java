@@ -5,14 +5,18 @@ import java.util.stream.Collectors;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.MapPropertySource;
 import org.springframework.core.env.MutablePropertySources;
 import org.springframework.core.env.StandardEnvironment;
+import org.springframework.data.r2dbc.repository.config.EnableR2dbcRepositories;
 
 import io.github.cdimascio.dotenv.Dotenv;
 import io.github.cdimascio.dotenv.DotenvEntry;
 
 @SpringBootApplication
+@EnableR2dbcRepositories
+@ComponentScan({"com.loc.profile_service", "com.loc.common_service"})
 public class ProfileServiceApplication {
 
 	public static void main(String[] args) {

@@ -1,7 +1,9 @@
 package com.loc.profile_service.service;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import com.loc.common_service.common.CommonException;
 import com.loc.profile_service.dto.request.ProfileRequest;
 import com.loc.profile_service.dto.response.ProfileResponse;
 import com.loc.profile_service.enums.ProfileStatus;
@@ -39,7 +41,7 @@ public class ProfileService {
         return checkDuplicate(request.getEmail())
             .flatMap(result -> {
                 if (Boolean.TRUE.equals(result)) {
-                    return Mono.error(new Exception("Duplicate Profile"));
+                    return Mono.error(new CommonException("PF02","Duplicate profile !", HttpStatus.BAD_REQUEST));
                 } else {
                     request.setStatus(ProfileStatus.PENDING);
                     return createProfile(request);
