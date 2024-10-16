@@ -1,0 +1,35 @@
+spring:
+    jpa:
+        show-sql: true
+
+    application:
+        name: account-service
+
+    r2dbc:
+        url: r2dbc:pool:mysql://localhost:3306/${MYSQL_DB:accountdb}
+        username: ${MYSQL_USER:root}
+        password: ${MYSQL_PASSWORD:mysql}
+
+    liquibase:
+        url: jdbc:mysql://localhost:3306/${MYSQL_DB:accountdb}
+        enabled: true
+        user: ${MYSQL_USER:root}
+        password: ${MYSQL_PASSWORD:mysql}
+        change-log: classpath:db/changelog/changelog-master.xml
+
+        
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+
+# validator:
+#     schema:
+#         create-profile: validator/createProfile.chema.json
+
+server:
+    port: 9215
+
+api:
+    prefix: api/v1

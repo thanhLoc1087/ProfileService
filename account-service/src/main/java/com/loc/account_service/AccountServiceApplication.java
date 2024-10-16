@@ -1,4 +1,4 @@
-package com.loc.profile_service;
+package com.loc.account_service;
 
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -16,25 +16,25 @@ import io.github.cdimascio.dotenv.DotenvEntry;
 
 @SpringBootApplication
 @EnableR2dbcRepositories
-@ComponentScan({"com.loc.profile_service", "com.loc.common_service"})
-public class ProfileServiceApplication {
+@ComponentScan({"com.loc.account_service", "com.loc.common_service"})
+public class AccountServiceApplication {
 
 	public static void main(String[] args) {
 		Map<String, Object> env = Dotenv.configure()
-				.directory("profile-service")
-				.load()
-				.entries()
-				.stream()
-				.collect(
-						Collectors.toMap(DotenvEntry::getKey, DotenvEntry::getValue));
-		new SpringApplicationBuilder(ProfileServiceApplication.class)
-				.environment(new StandardEnvironment() {
-					@Override
-					protected void customizePropertySources(MutablePropertySources propertySources) {
-						super.customizePropertySources(propertySources);
-						propertySources.addLast(new MapPropertySource("dotenvProperties", env));
-					}
-				}).run(args);
+			.directory("account-service")
+			.load()
+			.entries()
+			.stream()
+			.collect(
+				Collectors.toMap(DotenvEntry::getKey, DotenvEntry::getValue));
+		new SpringApplicationBuilder(AccountServiceApplication.class)
+			.environment(new StandardEnvironment() {
+				@Override
+				protected void customizePropertySources(MutablePropertySources propertySources) {
+					super.customizePropertySources(propertySources);
+					propertySources.addLast(new MapPropertySource("dotenvProperties", env));
+				}
+			}).run(args);
 	}
 
 }
