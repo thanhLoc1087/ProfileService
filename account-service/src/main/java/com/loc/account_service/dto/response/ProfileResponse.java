@@ -1,4 +1,4 @@
-package com.loc.profile_service.dto.request;
+package com.loc.account_service.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProfileRequest {
+public class ProfileResponse {
     private long id;
     private String email;
     private String status;

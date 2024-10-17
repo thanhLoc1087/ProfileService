@@ -1,7 +1,4 @@
-package com.loc.account_service.data;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
+package com.loc.account_service.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,16 +6,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-@Table
+@NoArgsConstructor
 @Builder
-public class Account {
-    @Id
+public class AccountCreationRequest {
     private String id;
     private String email;
     private String currency;
     private double balance;
     private double reserved;
-    private int version = 0;
 }

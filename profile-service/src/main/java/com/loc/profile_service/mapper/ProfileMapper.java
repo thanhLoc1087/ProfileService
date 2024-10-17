@@ -9,5 +9,6 @@ import com.loc.profile_service.dto.response.ProfileResponse;
 @Mapper(componentModel="spring")
 public interface ProfileMapper {
     public Profile toProfile(ProfileRequest request);
+    public Profile toProfile(ProfileResponse response);
     public ProfileResponse toProfileResponse(Profile profile);
 }

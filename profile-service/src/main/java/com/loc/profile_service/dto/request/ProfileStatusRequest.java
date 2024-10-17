@@ -9,11 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProfileRequest {
-    private long id;
+public class ProfileStatusRequest {
     private String email;
     private String status;
-    private double initialBalance;
-    private String name;
-    private String role;
 }
