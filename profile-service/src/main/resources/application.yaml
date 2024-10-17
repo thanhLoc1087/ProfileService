@@ -16,13 +16,27 @@ spring:
         user: ${MYSQL_USER:root}
         password: ${MYSQL_PASSWORD:mysql}
         change-log: classpath:db/changelog/changelog-master.xml
+    
+    kafka:
+        producer:
+            retries: 3
+            batch-size: 16384
+            buffer-memory: 33554432
 
+
+kafka:
+    bootstrap:
+        servers: localhost:9094
         
 logging:
   level:
     org:
       springframework:
         security: DEBUG
+
+payment:
+    kafka:
+        consumer-group-id: profileService-groupId
 
 validator:
     schema:

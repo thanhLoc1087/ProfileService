@@ -13,10 +13,16 @@
             </not>
         </preConditions>
         <createTable tableName="account">
-            <column name="id" type="VARCHAR(36)" defaultValueComputed="uuid()">
+            <column name="id" type="VARCHAR(36)">
                 <constraints primaryKey="true" nullable="false" />
             </column>
         </createTable>
+        <sql>
+            CREATE TRIGGER before_insert_account
+            BEFORE INSERT ON accountdb.account
+            FOR EACH ROW
+            SET NEW.id = (SELECT uuid());
+        </sql>
     </changeSet>
     <changeSet id="table-account-add-column-email" author="account">
         <preConditions onFail="CONTINUE" onFailMessage="column email already exists in table account">
