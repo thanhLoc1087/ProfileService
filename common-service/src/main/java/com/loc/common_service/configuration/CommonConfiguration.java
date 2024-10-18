@@ -7,18 +7,20 @@ import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 
-import lombok.RequiredArgsConstructor;
 import reactor.kafka.receiver.ReceiverOptions;
 import reactor.kafka.sender.KafkaSender;
 import reactor.kafka.sender.SenderOptions;
 
 @Configuration
-@RequiredArgsConstructor
+@DependsOn("reactiveKafkaAppProperties")
 public class CommonConfiguration {
-    private final ReactiveKafkaAppProperties reactiveKafkaAppProperties;
+    @Autowired
+    private ReactiveKafkaAppProperties reactiveKafkaAppProperties;
 
     @Bean
     public KafkaSender<String, String> kafkaSender() {
