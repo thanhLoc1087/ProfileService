@@ -54,7 +54,7 @@ public class ProfileControllerTest {
 
     @Test
     void checkDuplicate() {
-        when(profileService.checkDuplicate(anyString())).thenReturn(Mono.just(true));
+        when(profileService.checkDuplicate("test")).thenReturn(Mono.just(true));
         profileController.checkDuplicate(anyString())
             .getBody()
             .doOnNext(aBoolean -> Assertions.assertEquals(aBoolean, true)).subscribe();
